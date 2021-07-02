@@ -46,17 +46,33 @@
 
 ## works テーブル
 
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| date         | string     | null: false                    |
+| process_name | string     | null: false                    |
+| user         | references | null: false, foreign_key: true |
+| channel      | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :room
+- belongs_to :user
+- has_many :time_studies
+
+
+
+
+
+## time_studies テーブル
+
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
 | production_name      | string     |                                |
-| serial number        | string     |                                |
-| standard_time        | integer    |                                |
-| job_time             | integer    | null: false                    |
-| production volume    | string     | null: false                    |
-| failure              | text       |                                |
-| failure              | text       |                                |
-| forgetting           | text       |                                |
-| note                 | text       |                                |
+| serial_number        | string     |                                |
+| start_time           | integer    | null: false                    |
+| ending_time          | integer    | null: false                    |
+| failure              | boolean    |                                |
+| forgetting           | boolean    |                                |
+| memo                 | text       |                                |
 | user                 | references | null: false, foreign_key: true |
 | chanel               | references | null: false, foreign_key: true |
 
@@ -64,4 +80,3 @@
 
 ### Association
 - belongs_to :works
-- belongs_to :user

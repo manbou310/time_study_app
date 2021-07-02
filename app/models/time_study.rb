@@ -1,0 +1,2 @@
+class TimeStudy < ApplicationRecord
+end
