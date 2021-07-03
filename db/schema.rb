@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_01_051415) do
+ActiveRecord::Schema.define(version: 2021_07_02_051604) do
+
+  create_table "time_studies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "production_name"
+    t.string "serial_number"
+    t.integer "start_time"
+    t.integer "ending_time"
+    t.boolean "forgetting"
+    t.boolean "problem"
+    t.bigint "work_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["work_id"], name: "index_time_studies_on_work_id"
+  end
 
   create_table "works", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "date"

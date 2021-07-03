@@ -70,7 +70,7 @@
 | serial_number        | string     |                                |
 | start_time           | integer    | null: false                    |
 | ending_time          | integer    | null: false                    |
-| failure              | boolean    |                                |
+| problem              | boolean    |                                |
 | forgetting           | boolean    |                                |
 | memo                 | text       |                                |
 | user                 | references | null: false, foreign_key: true |

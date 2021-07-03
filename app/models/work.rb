@@ -9,5 +9,4 @@ class Work < ApplicationRecord
     validates :process_name
   end
 
-  end
 end
