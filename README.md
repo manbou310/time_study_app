@@ -8,32 +8,75 @@
 | name          | string  | null: false |
 | email         | string  | null: false |
 | password      | string  | null: false |
-| job           | string  | null: false |
-| Standard_time | integer |             |
+| image         |         |             |
+
+### Association
+- has_many :channel_users
+- has_many :channels, through: :channel_users
+- has_many :works
+
 
 
 ## channels テーブル
-
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | name   | string | null: false |
 
-## room_users テーブル
+### Association
+- has_many :channel_users
+- has_many :users, through: :channel_users
+- has_many :works
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| room   | references | null: false, foreign_key: true |
+
+
+
+## channel_users テーブル
+
+| Column    | Type       | Options                        |
+| --------- | ---------- | ------------------------------ |
+| user      | references | null: false, foreign_key: true |
+| channel   | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :room
+- belongs_to :user
+
+
+
 
 ## works テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| content | string     |                                |
-| user    | references | null: false, foreign_key: true |
-| room    | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| date         | string     | null: false                    |
+| process_name | string     | null: false                    |
+| user         | references | null: false, foreign_key: true |
+| channel      | references | null: false, foreign_key: true |
 
 ### Association
-
 - belongs_to :room
 - belongs_to :user
+- has_many :time_studies
+
+
+
+
+
+## time_studies テーブル
+
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| production_name      | string     |                                |
+| serial_number        | string     |                                |
+| start_time           | integer    | null: false                    |
+| ending_time          | integer    | null: false                    |
+| problem              | boolean    |                                |
+| forgetting           | boolean    |                                |
+| memo                 | text       |                                |
+| user                 | references | null: false, foreign_key: true |
+| chanel               | references | null: false, foreign_key: true |
+
+
+
+### Association
+- belongs_to :works
