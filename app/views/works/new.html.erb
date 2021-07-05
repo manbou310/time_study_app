@@ -9,6 +9,7 @@
 
     <title>TimeStudyApp</title>
 
+
     <script type="text/javascript" language="javascript">
 
 
@@ -36,70 +37,51 @@
     </script>
 
 
-
   </head>
   <body>
-   <%= form_with url: new_work_path, local: true do |f| %>
+   
+   <%= form_with(model:@work, local: true) do |f| %>
+   <%= render 'shared/error_messages', model: f.object %>
+    <div class="parent">
       <div class="row mt-3">
         <div class="border-bottom pb-3">
           <div class="d-flex justify-content-around">
-            <div class="col-0.5">
-                <label>日付：</label>
-            </div>
             <div class="col-3">
-              <%= f.date_field :created_at,class: 'form-control' %>
-            </div>
-
-        
-            <div class="col-0.5">
-              <label>工程名：</label>
+              <%= f.date_field :date ,class: 'form-control' ,placeholder:"日付" %>
             </div>
             <div class="col-4">
-              <%= f.text_field :created_at, class: 'form-control' %>
+              <%= f.text_field :process_name, class: 'form-control',placeholder:"工程名" %>
             </div>
           </div>
         </div>
       </div>
-   <% end %> 
 
-   
+       <div class="add_from">
+          <%= link_to_add_association "フォームを追加", f, :time_studies,
+            class: "btn btn-outline-secondary mr-3",
+            id: 'add-btn',
+            data: {
+              association_insertion_node: '#detail-association-insertion-point',
+              association_insertion_method: 'after'
+              }
+          %>
+      </div>
 
-    <div class="d-flex justify-content-around my-3 mx-3">
+        <%= f.fields_for :time_studies do |form| %>
+            <%= render "time_study_fields", f: form %>
+        <% end %>
 
-        <button type="button" class="btn btn-outline-secondary mr-3">追加
-          <i class="bi bi-plus-square mr-1"></i>
-        </button>
-        <div class= col-2.5>
-          <input class="form-control form-control-lg" type="text" placeholder="製品名">
-        </div>
-        <div class= col-2.5>
-          <input class="form-control form-control-lg" type="text" placeholder="製造番号">
-        </div>
-        <div class= col-0.5>
-          <form name="form1" id="id_form1" action="">
-            <input class="form-control form-control-lg" name="textBox1" id="id_textBox1" type="text" placeholder="開始時間" value="" />
-            <input type="button" value="開始時刻" onclick="onButtonClick();" />
-          </form>
-        </div>
-
-        <div class= col-0.5>
-          <form name="form2" id="id_form2" action="">
-            <input class="form-control form-control-lg" name="textBox2" id="id_textBox2" type="text" placeholder="終了時間" value="" />
-            <input type="button" value="終了時刻" onclick="onButtonClickAfter();" />
-          </form>
-        </div>
- 
-        
-          <p class="text-end">不具合：</p>
-          <%# <%= f.check_box :problem ,{}, "true", "false" %>
-          <p class="text-end">忘れ：</p>
-          <%# <%= f.check_box :forgetting ,{}, "true", "false" %>
+      <div class="d-flex align-items-center">
+        <%= f.submit "保存する" ,class:"btn btn-secondary"%>
+      </div>
     </div>
-
-
+    
+   <% end %> 
 
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
