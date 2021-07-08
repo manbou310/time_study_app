@@ -1,7 +1,7 @@
 class Work < ApplicationRecord
 
-  # belongs_to :user
-  # belongs_to :chanel
+  belongs_to :user
+  belongs_to :channel
   has_many :time_studies, dependent: :destroy
   accepts_nested_attributes_for :time_studies, allow_destroy: true
 

@@ -8,7 +8,7 @@
 | name          | string  | null: false |
 | email         | string  | null: false |
 | password      | string  | null: false |
-| image         |         |             |
+| image  
 
 ### Association
 - has_many :channel_users
@@ -18,9 +18,9 @@
 
 
 ## channels テーブル
-| Column | Type   | Options     |
-| ------ | ------ | ----------- |
-| name   | string | null: false |
+| Column         | Type   | Options     |
+| -------------- | ------ | ----------- |
+| channel_name   | string | null: false |
 
 ### Association
 - has_many :channel_users
@@ -74,7 +74,7 @@
 | forgetting           | boolean    |                                |
 | memo                 | text       |                                |
 | user                 | references | null: false, foreign_key: true |
-| chanel               | references | null: false, foreign_key: true |
+| channel              | references | null: false, foreign_key: true |
 
 
 

@@ -7,7 +7,7 @@ class CreateTimeStudies < ActiveRecord::Migration[6.0]
       t.integer :ending_time
       t.boolean :forgetting
       t.boolean :problem
-      t.references :work
+      t.references :work, null: false, foreign_key: true
 
       t.timestamps
     end

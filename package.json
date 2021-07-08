@@ -1,7 +1,12 @@
 {
   "dependencies": {
-    "@nathanvda/cocoon": "^1.2.14",
     "cocoon": "github:nathanvda/cocoon#c24ba53",
     "jquery": "^3.6.0"
-  }
+  },
+  "name": "time_study_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/manbou310/time_study_app.git",
+  "author": "manbou310 <hare.sunshine09@gmail.com>",
+  "license": "MIT"
 }

@@ -57,3 +57,4 @@ gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'pry-rails'
 gem 'devise'
 gem 'cocoon'
+gem "jquery-rails"
